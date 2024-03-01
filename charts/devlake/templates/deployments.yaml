@@ -118,6 +118,9 @@ spec:
       annotations:
         {{- toYaml .Values.lake.podAnnotations | nindent 8 }}
     spec:
+      {{- with .Values.lake.serviceAccountName }}
+      serviceAccountName: {{ . }}
+      {{- end }}
       {{- with .Values.lake.securityContext }}
       securityContext:
       {{- toYaml . | nindent 8 }}
@@ -172,7 +175,10 @@ spec:
           {{- with .Values.lake.containerSecurityContext }}
           securityContext:
           {{- toYaml . | nindent 12 }}
-      {{- end }}
+          {{- end }}
+        {{- with .Values.lake.extraContainers }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
       {{- if .Values.lake.hostNetwork }}
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet

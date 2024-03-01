@@ -178,6 +178,8 @@ Some useful parameters for the chart, you could also check them in values.yaml
 | lake.extraLabels                          | extra labels for lake's statefulset                                                   | {}                       |
 | lake.securityContext                      | pod security context values                                                           | {}                       |
 | lake.containerSecurityContext             | container security context values                                                     | {}                       |
+| lake.extraContainers                      | extra containers to add to the api deployment                                         | []                       |
+| lake.serviceAccountName                   | the Kubernetes service account name                                                   | ""                       |
 | ui.image.repository                       | repository for ui's image                                                             | apache/devlake-config-ui |
 | ui.image.pullPolicy                       | pullPolicy for ui's image                                                             | Always                   |
 | ui.basicAuth.enabled                      | If the basic auth in ui is enabled                                                    | false                    |
